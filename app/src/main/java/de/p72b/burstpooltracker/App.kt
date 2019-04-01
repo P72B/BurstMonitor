@@ -4,9 +4,11 @@ import android.app.Application
 import android.util.Log
 import androidx.work.Configuration
 import androidx.work.WorkManager
+import com.crashlytics.android.Crashlytics
+import com.google.firebase.analytics.FirebaseAnalytics
 import de.p72b.burstpooltracker.http.WebService
 import de.p72b.burstpooltracker.koin.appModule
-import de.p72b.burstpooltracker.worker.StatusFetcherWorker
+import io.fabric.sdk.android.Fabric
 import org.koin.android.ext.android.inject
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
@@ -22,8 +24,18 @@ class App: Application() {
     override fun onCreate() {
         super.onCreate()
         sInstance = this
+        initTracking()
         initKoin()
         initWorkManager()
+    }
+
+    private fun initTracking() {
+        val shouldCrashReport = !Preferences.readBooleanFromPreferences(Preferences.OPT_OUT_CRASHLYTICS)
+        val shouldAnalytics = !Preferences.readBooleanFromPreferences(Preferences.OPT_OUT_ANALYTICS)
+        if (shouldCrashReport) {
+            Fabric.with(this, Crashlytics())
+        }
+        FirebaseAnalytics.getInstance(this).setAnalyticsCollectionEnabled(shouldAnalytics)
     }
 
     private fun initKoin() {
