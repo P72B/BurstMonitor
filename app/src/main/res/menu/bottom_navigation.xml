@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/navigation_songs"
+          android:icon="@drawable/ic_dashboard"
+          android:title="@string/bottom_navigation_dashboard"/>
+
+    <item android:id="@+id/navigation_albums"
+          android:icon="@drawable/ic_equalizer"
+          android:title="@string/bottom_navigation_statistic"/>
+
+    <item android:id="@+id/navigation_artists"
+          android:icon="@drawable/ic_list"
+          android:title="@string/bottom_navigation_list"/>
+</menu>

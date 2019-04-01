@@ -1,4 +1,7 @@
 <resources>
-    <string name="app_name">BurstPoolTracker</string>
+    <string name="app_name">BurstMonitor</string>
     <string name="action_settings">Settings</string>
+    <string name="bottom_navigation_dashboard">Dashboard</string>
+    <string name="bottom_navigation_statistic">Statistic</string>
+    <string name="bottom_navigation_list">List</string>
 </resources>

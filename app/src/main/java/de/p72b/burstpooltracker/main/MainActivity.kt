@@ -14,6 +14,7 @@ import de.p72b.burstpooltracker.worker.StatusFetcherWorker
 import kotlinx.android.synthetic.main.activity_main.*
 import java.util.concurrent.TimeUnit
 import androidx.lifecycle.Observer
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import de.p72b.burstpooltracker.room.Miner
 
 
@@ -33,6 +34,7 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
 
         val recyclerView: RecyclerView = findViewById(R.id.vRecyclerView)
+        val fab: FloatingActionButton = findViewById(R.id.vFab)
         val adapter = MinerAdapter(this)
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(this)

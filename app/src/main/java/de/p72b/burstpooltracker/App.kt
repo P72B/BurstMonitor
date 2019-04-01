@@ -6,16 +6,13 @@ import androidx.work.Configuration
 import androidx.work.WorkManager
 import com.crashlytics.android.Crashlytics
 import com.google.firebase.analytics.FirebaseAnalytics
-import de.p72b.burstpooltracker.http.WebService
 import de.p72b.burstpooltracker.koin.appModule
 import io.fabric.sdk.android.Fabric
-import org.koin.android.ext.android.inject
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
 
 class App: Application() {
-    private val webService: WebService by inject()
 
     companion object {
         lateinit var sInstance: App
