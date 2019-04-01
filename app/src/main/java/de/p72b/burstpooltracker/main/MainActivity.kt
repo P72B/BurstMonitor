@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.work.*
 import de.p72b.burstpooltracker.R
+import de.p72b.burstpooltracker.settings.SettingsActivity
 import de.p72b.burstpooltracker.worker.StatusFetcherWorker
 
 import kotlinx.android.synthetic.main.activity_main.*
@@ -71,7 +72,10 @@ class MainActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
-            R.id.action_settings -> true
+            R.id.action_settings -> {
+                startActivity(Intent(this, SettingsActivity::class.java))
+                true
+            }
             else -> super.onOptionsItemSelected(item)
         }
     }

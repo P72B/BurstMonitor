@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="listArray">
+        <item>100-0-pool</item>
+        <item>50-50-pool</item>
+        <item>0-100-pool</item>
+    </string-array>
+    <string-array name="listValues">
+        <item>https://100-0-pool.burst.cryptoguru.org/</item>
+        <item>https://50-50-pool.burst.cryptoguru.org/</item>
+        <item>https://0-100-pool.burst.cryptoguru.org/</item>
+    </string-array>
+</resources>

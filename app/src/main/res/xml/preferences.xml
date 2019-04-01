@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory
+            app:key="pool_category"
+            app:title="Pool setup">
+
+        <EditTextPreference android:title="Your Address"
+                            android:summary="Set your Wallet address"
+                            android:key="address"
+                            android:icon="@drawable/ic_person"
+                            android:dialogMessage="example: AAAA-1234-BBBB-4567B"
+                            app:useSimpleSummaryProvider="true"/>
+
+        <ListPreference
+                app:title="Pool settings"
+                app:key="pool"
+                app:icon="@drawable/ic_cloud"
+                app:entries="@array/listArray"
+                app:useSimpleSummaryProvider="true"
+                app:entryValues="@array/listValues"/>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+            app:key="other_category"
+            app:title="Others">
+
+        <SwitchPreference app:title="Application tracking"
+                          app:defaultValue="false"
+                          app:summary="This option if selected will allow the application to check for latest versions."
+                          app:key="applicationTracking"/>
+
+    </PreferenceCategory>
+
+</PreferenceScreen>
