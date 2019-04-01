@@ -1,0 +1,59 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion 28
+    defaultConfig {
+        applicationId "de.p72b.burstpooltracker"
+        minSdkVersion 26
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    api fileTree(dir: 'libs', include: ['*.jar'])
+    api"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    api 'androidx.appcompat:appcompat:1.1.0-alpha03'
+    api 'androidx.core:core-ktx:1.1.0-alpha05'
+    api "android.arch.work:work-runtime-ktx:$androidXWorkVersion"
+    api 'androidx.constraintlayout:constraintlayout:1.1.3'
+    api 'com.google.android.material:material:1.1.0-alpha04'
+
+    api "com.squareup.retrofit2:retrofit:${retrofitVersion}"
+    api "com.squareup.retrofit2:converter-gson:${retrofitVersion}"
+    api("com.squareup.retrofit2:converter-simplexml:${retrofitVersion}") {
+        exclude group: 'xpp3', module: 'xpp3'
+        exclude group: 'stax', module: 'stax-api'
+        exclude group: 'stax', module: 'stax'
+    }
+    api 'io.reactivex.rxjava2:rxandroid:2.1.1'
+    api "com.squareup.retrofit2:adapter-rxjava2:${retrofitVersion}"
+    api "com.squareup.okhttp3:okhttp:${okhttpVersion}"
+    api "org.koin:koin-android:${koinVersion}"
+
+    api "pl.droidsonroids:jspoon:${jspoonVersion}"
+    api "pl.droidsonroids.retrofit2:converter-jspoon:${jspoonVersion}"
+
+    api "android.arch.persistence.room:runtime:${roomVersion}"
+    kapt "android.arch.persistence.room:compiler:${roomVersion}"
+    androidTestImplementation "android.arch.persistence.room:testing:${roomVersion}"
+
+    api "android.arch.lifecycle:extensions:${archLifecycleVersion}"
+    kapt "android.arch.lifecycle:compiler:${archLifecycleVersion}"
+    implementation 'androidx.recyclerview:recyclerview:1.0.0'
+
+}
