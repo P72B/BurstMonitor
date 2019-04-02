@@ -6,6 +6,7 @@ import androidx.preference.PreferenceManager
 import androidx.work.Worker
 import androidx.work.WorkerParameters
 import de.p72b.burstpooltracker.MinerRepository
+import de.p72b.burstpooltracker.R
 import de.p72b.burstpooltracker.Utils
 import de.p72b.burstpooltracker.http.MinerPage
 import de.p72b.burstpooltracker.http.WebService
@@ -26,7 +27,7 @@ class StatusFetcherWorker(
     override fun doWork(): Result {
 
         val minerPageResponse = getMinerPage()
-        val address = PreferenceManager.getDefaultSharedPreferences(appContext).getString("address", "") ?: ""
+        val address = PreferenceManager.getDefaultSharedPreferences(appContext).getString(appContext.getString(R.string.pref_key_address), "") ?: ""
         val foundPoiMiner = Utils.minerFromPage(minerPageResponse, address)
         if (foundPoiMiner != null) {
             repository.getLatestEntryFor(address)?.let {

@@ -9,14 +9,14 @@
 
         <EditTextPreference android:title="Your Address"
                             android:summary="Set your Wallet address"
-                            android:key="address"
+                            android:key="@string/pref_key_address"
                             android:icon="@drawable/ic_person"
                             android:dialogMessage="example: AAAA-1234-BBBB-4567B"
                             app:useSimpleSummaryProvider="true"/>
 
         <ListPreference
                 app:title="Pool settings"
-                app:key="pool"
+                app:key="@string/pref_key_pool"
                 app:icon="@drawable/ic_cloud"
                 app:entries="@array/listArray"
                 app:useSimpleSummaryProvider="true"
@@ -30,13 +30,13 @@
 
         <SwitchPreference app:title="Firebase tracking"
                           app:defaultValue="true"
-                          app:summary="This option if selected will allow the application to check for latest versions."
-                          app:key="firebaseTracking"/>
+                          app:summary="@string/pref_summary_firebase"
+                          app:key="@string/pref_key_firebase_tracking"/>
 
         <SwitchPreference app:title="Crashlytics tracking"
                           app:defaultValue="true"
-                          app:summary="This option if selected will allow the application to check for latest versions."
-                          app:key="crashlyticsTracking"/>
+                          app:summary="@string/pref_summary_crashlytics"
+                          app:key="@string/pref_key_crashlytics_tracking"/>
 
     </PreferenceCategory>
 
