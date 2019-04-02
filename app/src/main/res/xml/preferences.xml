@@ -28,10 +28,15 @@
             app:key="other_category"
             app:title="Others">
 
-        <SwitchPreference app:title="Application tracking"
-                          app:defaultValue="false"
+        <SwitchPreference app:title="Firebase tracking"
+                          app:defaultValue="true"
                           app:summary="This option if selected will allow the application to check for latest versions."
-                          app:key="applicationTracking"/>
+                          app:key="firebaseTracking"/>
+
+        <SwitchPreference app:title="Crashlytics tracking"
+                          app:defaultValue="true"
+                          app:summary="This option if selected will allow the application to check for latest versions."
+                          app:key="crashlyticsTracking"/>
 
     </PreferenceCategory>
 

@@ -2,6 +2,7 @@ package de.p72b.burstpooltracker
 
 import android.app.Application
 import android.util.Log
+import androidx.preference.PreferenceManager
 import androidx.work.Configuration
 import androidx.work.WorkManager
 import com.crashlytics.android.Crashlytics
@@ -27,8 +28,8 @@ class App: Application() {
     }
 
     private fun initTracking() {
-        val shouldCrashReport = !Preferences.readBooleanFromPreferences(Preferences.OPT_OUT_CRASHLYTICS)
-        val shouldAnalytics = !Preferences.readBooleanFromPreferences(Preferences.OPT_OUT_ANALYTICS)
+        val shouldCrashReport = !PreferenceManager.getDefaultSharedPreferences(this).getBoolean("firebaseTracking",false)
+        val shouldAnalytics = !PreferenceManager.getDefaultSharedPreferences(this).getBoolean("crashlyticsTracking",false)
         if (shouldCrashReport) {
             Fabric.with(this, Crashlytics())
         }

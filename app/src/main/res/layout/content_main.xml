@@ -11,14 +11,16 @@
 
     <TextView
             android:id="@+id/vTitle"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="2NJ6-DD4F-Z8PL-9725G"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" app:layout_constraintHorizontal_bias="0.023"
-            app:layout_constraintVertical_bias="0.012" android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp" app:layout_constraintBottom_toTopOf="@+id/vRecyclerView"/>
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintHorizontal_bias="0.023"
+            app:layout_constraintVertical_bias="0.012"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toTopOf="@id/vRecyclerView"/>
 
     <androidx.recyclerview.widget.RecyclerView
             android:layout_width="0dp"

@@ -1,22 +1,24 @@
 package de.p72b.burstpooltracker.main
 
+import android.content.Intent
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity;
+import android.preference.PreferenceManager
 import android.view.Menu
 import android.view.MenuItem
+import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.work.*
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import de.p72b.burstpooltracker.R
+import de.p72b.burstpooltracker.room.Miner
 import de.p72b.burstpooltracker.settings.SettingsActivity
 import de.p72b.burstpooltracker.worker.StatusFetcherWorker
-
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.content_main.*
 import java.util.concurrent.TimeUnit
-import androidx.lifecycle.Observer
-import com.google.android.material.floatingactionbutton.FloatingActionButton
-import de.p72b.burstpooltracker.room.Miner
 
 
 class MainActivity : AppCompatActivity() {
@@ -24,7 +26,6 @@ class MainActivity : AppCompatActivity() {
     companion object {
         private val TAG = "p72b"
         const val FETCHER_WORKER = "FETCHER_WORKER"
-        const val MY_ADDRESS = "2NJ6-DD4F-Z8PL-9725G"
     }
 
     private lateinit var minerViewModel: MinerViewModel
@@ -49,6 +50,15 @@ class MainActivity : AppCompatActivity() {
         fab.setOnClickListener {
             createPeriodicWorker()
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        setupAddress()
+    }
+
+    private fun setupAddress() {
+        vTitle.text = PreferenceManager.getDefaultSharedPreferences(this).getString("address", "") ?: "not set"
     }
 
     private fun createPeriodicWorker() {
