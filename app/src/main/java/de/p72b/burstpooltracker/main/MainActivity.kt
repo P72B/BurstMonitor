@@ -59,7 +59,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupAddress() {
-        vTitle.text = PreferenceManager.getDefaultSharedPreferences(this).getString(getString(ADDRESS), "") ?: getString(R.string.not_set)
+        vTitle.text = PreferenceManager.getDefaultSharedPreferences(this).getString(getString(ADDRESS), getString(R.string.not_set))
     }
 
     private fun createPeriodicWorker() {
