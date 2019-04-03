@@ -14,6 +14,7 @@ import androidx.work.*
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import de.p72b.burstpooltracker.R
 import de.p72b.burstpooltracker.room.Miner
+import de.p72b.burstpooltracker.settings.ADDRESS
 import de.p72b.burstpooltracker.settings.SettingsActivity
 import de.p72b.burstpooltracker.worker.StatusFetcherWorker
 import kotlinx.android.synthetic.main.activity_main.*
@@ -58,7 +59,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupAddress() {
-        vTitle.text = PreferenceManager.getDefaultSharedPreferences(this).getString(getString(R.string.pref_key_address), "") ?: getString(R.string.not_set)
+        vTitle.text = PreferenceManager.getDefaultSharedPreferences(this).getString(getString(ADDRESS), "") ?: getString(R.string.not_set)
     }
 
     private fun createPeriodicWorker() {

@@ -8,6 +8,8 @@ import androidx.work.WorkManager
 import com.crashlytics.android.Crashlytics
 import com.google.firebase.analytics.FirebaseAnalytics
 import de.p72b.burstpooltracker.koin.appModule
+import de.p72b.burstpooltracker.settings.CRASHLYTIC_TRACKING
+import de.p72b.burstpooltracker.settings.FIREBASE_TRACKING
 import io.fabric.sdk.android.Fabric
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
@@ -28,8 +30,9 @@ class App: Application() {
     }
 
     private fun initTracking() {
-        val shouldCrashReport = !PreferenceManager.getDefaultSharedPreferences(this).getBoolean("firebaseTracking",false)
-        val shouldAnalytics = !PreferenceManager.getDefaultSharedPreferences(this).getBoolean("crashlyticsTracking",false)
+        val prefereces = PreferenceManager.getDefaultSharedPreferences(this)
+        val shouldCrashReport = !prefereces.getBoolean(getString(FIREBASE_TRACKING),false)
+        val shouldAnalytics = !prefereces.getBoolean(getString(CRASHLYTIC_TRACKING),false)
         if (shouldCrashReport) {
             Fabric.with(this, Crashlytics())
         }
