@@ -1,10 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:orientation="vertical"
         tools:context=".main.MainActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.cardview.widget.CardView android:layout_width="match_parent"
+                                       android:layout_height="wrap_content"
+                                       android:id="@+id/vCardView"
+                                       android:layout_margin="8dp"
+                                       app:layout_constraintEnd_toEndOf="parent"
+                                       app:layout_constraintTop_toTopOf="parent"
+                                       app:cardBackgroundColor="@color/darkBlue"
+                                       app:layout_constraintStart_toStartOf="parent"
+                                       app:layout_constraintVertical_bias="0.0" android:layout_marginBottom="8dp"
+                                       app:layout_constraintBottom_toBottomOf="parent">
+        <androidx.constraintlayout.widget.ConstraintLayout
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            <com.db.chart.view.LineChartView
+                    android:id="@+id/vLineChartBurst"
+                    android:layout_width="match_parent"
+                    android:layout_height="225dp"
+                    android:padding="8dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+</LinearLayout>

@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import de.p72b.burstpooltracker.R
+import de.p72b.burstpooltracker.Utils
 import de.p72b.burstpooltracker.room.Miner
 import java.text.SimpleDateFormat
 import java.time.format.DateTimeFormatter
@@ -35,11 +36,7 @@ class MinerAdapter(context: Context): RecyclerView.Adapter<MinerAdapter.MinerVie
         holder.historicalShareItemView.text = miner.historicalShare.toString() + " %"
         holder.plotSizeItemView.text = miner.plotSize.toString() + " TB"
 
-        val calendar = Date(miner.timeMilliseconds)
-        val formatter = SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS", Locale.GERMAN)
-        val formatted = formatter.format(calendar)
-
-        holder.timestampItemView.text = formatted
+        holder.timestampItemView.text = Utils.timeStampToIsoDate(miner.timeMilliseconds)
     }
 
     fun setMiners(miners: List<Miner>) {

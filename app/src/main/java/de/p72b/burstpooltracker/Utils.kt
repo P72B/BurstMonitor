@@ -2,9 +2,12 @@ package de.p72b.burstpooltracker
 
 import de.p72b.burstpooltracker.http.MinerPage
 import de.p72b.burstpooltracker.room.Miner
+import java.text.SimpleDateFormat
 import java.util.*
 
 object Utils {
+
+    private val formatter = SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS", Locale.GERMAN)
 
     fun minerFromPage(minerPage: MinerPage, poiAddress: String): Miner? {
         for (minerList in minerPage.table?.minerList.orEmpty()) {
@@ -16,6 +19,11 @@ object Utils {
             }
         }
         return null
+    }
+
+    fun timeStampToIsoDate(timeMilliseconds: Long): String {
+        val calendar = Date(timeMilliseconds)
+        return formatter.format(calendar)
     }
 
     private fun substringDouble(item: String, end: Int): Double {
