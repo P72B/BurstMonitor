@@ -25,7 +25,6 @@ class StatusFetcherWorker(
     private val repository: MinerRepository by inject()
 
     override fun doWork(): Result {
-
         val minerPageResponse = getMinerPage()
         val address = PreferenceManager.getDefaultSharedPreferences(appContext).getString(appContext.getString(ADDRESS), "") ?: ""
         val foundPoiMiner = Utils.minerFromPage(minerPageResponse, address)
@@ -35,8 +34,10 @@ class StatusFetcherWorker(
                 foundPoiMiner.delta_y = foundPoiMiner.timeMilliseconds - it.timeMilliseconds
                 foundPoiMiner.pitch = foundPoiMiner.delta_x / (foundPoiMiner.delta_y / 86_400_000.0)
             }
-            repository.insert(foundPoiMiner)
-            Log.d("p72b", "poi miner found and added to db!")
+            if (foundPoiMiner.delta_y == 0L || foundPoiMiner.delta_y > 60_000) {
+                repository.insert(foundPoiMiner)
+                Log.d("p72b", "poi miner found and added to db!")
+            }
         } else {
             Log.d("p72b", "poi miner NOT found!")
             // TODO Upps miner not found! Alarm!

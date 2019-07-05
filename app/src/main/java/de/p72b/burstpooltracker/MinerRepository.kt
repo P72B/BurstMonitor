@@ -29,6 +29,10 @@ class MinerRepository : KoinComponent {
         InsertAsyncTask(minerDao).execute(miner)
     }
 
+    fun deleteWhereDeltaYSmallerAs(value: Long) {
+        minerDao.deleteWhereDeltaYSmallerAs(value)
+    }
+
     class InsertAsyncTask internal constructor(private val asyncTaskDao: MinerDao) : AsyncTask<Miner, Void, Void>() {
         override fun doInBackground(vararg params: Miner): Void? {
             asyncTaskDao.insert(params[0])
