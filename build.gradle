@@ -10,7 +10,7 @@ buildscript {
         }
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.4.1'
+        classpath 'com.android.tools.build:gradle:3.5.1'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         classpath 'com.google.gms:google-services:4.2.0'
         classpath 'io.fabric.tools:gradle:1.26.1'
@@ -34,11 +34,11 @@ ext {
     appVersionCode = 1
     androidXWorkVersion = '1.0.1'
     retrofitVersion = '2.4.0'
-    koinVersion = '2.0.0-beta-4'
+    koinVersion = '2.0.1'
     okhttpVersion = "3.10.0"
     jspoonVersion = "1.3.2"
     roomVersion = '1.1.1'
     archLifecycleVersion = '1.1.1'
-    firebaseVersion = '16.0.8'
-    crashlyticsVersion = '2.9.9'
+    firebaseVersion = '17.2.0'
+    crashlyticsVersion = '2.10.1'
 }

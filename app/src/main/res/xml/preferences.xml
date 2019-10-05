@@ -28,6 +28,15 @@
             app:key="other_category"
             app:title="Others">
 
+        <ListPreference
+                app:title="Data filter"
+                app:key="@string/pref_key_filter"
+                app:icon="@drawable/ic_filter_list_black_24dp"
+                app:defaultValue="0"
+                app:entries="@array/listArrayFilter"
+                app:useSimpleSummaryProvider="true"
+                app:entryValues="@array/listValuesFilter"/>
+
         <SwitchPreference app:title="Firebase tracking"
                           app:defaultValue="true"
                           app:summary="@string/pref_summary_firebase"

@@ -12,7 +12,12 @@ import com.db.chart.view.LineChartView
 import de.p72b.burstpooltracker.main.MainActivity
 import de.p72b.burstpooltracker.room.Miner
 import android.graphics.Color
+import androidx.preference.PreferenceManager
+import de.p72b.burstpooltracker.App
 import de.p72b.burstpooltracker.R
+import de.p72b.burstpooltracker.Utils
+import de.p72b.burstpooltracker.settings.ADDRESS
+import de.p72b.burstpooltracker.settings.FILTER
 
 
 class StatisticFragment : Fragment() {
@@ -31,7 +36,7 @@ class StatisticFragment : Fragment() {
         (activity as MainActivity).minerViewModel.allMiners.observe(this,
             Observer<List<Miner>> { miners ->
                 if (miners != null) {
-                    setMiners(miners)
+                    setMiners(Utils.filter(miners))
                 }
             })
     }

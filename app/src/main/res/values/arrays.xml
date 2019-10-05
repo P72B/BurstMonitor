@@ -10,4 +10,16 @@
         <item>https://50-50-pool.burst.cryptoguru.org/</item>
         <item>https://0-100-pool.burst.cryptoguru.org/</item>
     </string-array>
+    <string-array name="listArrayFilter">
+        <item>none</item>
+        <item>2 hours</item>
+        <item>12 hours</item>
+        <item>1 day</item>
+    </string-array>
+    <string-array name="listValuesFilter">
+        <item>0</item>
+        <item>3600000</item>
+        <item>43200000</item>
+        <item>86400000</item>
+    </string-array>
 </resources>

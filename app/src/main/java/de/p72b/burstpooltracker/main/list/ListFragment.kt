@@ -2,7 +2,7 @@ package de.p72b.burstpooltracker.main.list
 
 import androidx.fragment.app.Fragment
 import android.os.Bundle
-import android.preference.PreferenceManager
+import androidx.preference.PreferenceManager
 import android.view.ViewGroup
 import android.view.LayoutInflater
 import android.view.View
@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import de.p72b.burstpooltracker.App
 import de.p72b.burstpooltracker.R
+import de.p72b.burstpooltracker.Utils
 import de.p72b.burstpooltracker.main.MainActivity
 import de.p72b.burstpooltracker.main.MinerAdapter
 import de.p72b.burstpooltracker.room.Miner
@@ -34,7 +35,7 @@ class ListFragment: Fragment() {
 
         (activity as MainActivity).minerViewModel.allMiners.observe(this,
             Observer<List<Miner>> { miners ->
-                adapter.setMiners(miners)
+                adapter.setMiners(Utils.filter(miners))
             })
     }
 
@@ -45,6 +46,6 @@ class ListFragment: Fragment() {
 
     private fun setupAddress() {
         vTitle.text = PreferenceManager.getDefaultSharedPreferences(App.sInstance.applicationContext)
-            .getString(getString(ADDRESS), getString(de.p72b.burstpooltracker.R.string.not_set))
+            .getString(getString(ADDRESS), getString(R.string.not_set))
     }
 }
