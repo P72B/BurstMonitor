@@ -65,13 +65,18 @@ object Utils {
     }
 
     private fun filterBy(minerList: List<Miner>, interval: Long): List<Miner> {
-        if (interval == 0L) {
+        if (interval == 0L || minerList.isEmpty() || minerList.size < 2) {
             return minerList
         }
+        val isAsc = (minerList[0].timeMilliseconds - minerList[1].timeMilliseconds) >= 0
         val filtered = mutableListOf<Miner>()
         var previous = 0L
         for (miner in minerList) {
-            val delta= previous - miner.timeMilliseconds
+            val delta= if (isAsc) {
+                previous - miner.timeMilliseconds
+            } else {
+                miner.timeMilliseconds - previous
+            }
             if (delta >= interval || previous == 0L) {
                 filtered.add(miner)
                 previous = miner.timeMilliseconds
