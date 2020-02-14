@@ -12,17 +12,14 @@ import com.db.chart.view.LineChartView
 import de.p72b.burstpooltracker.main.MainActivity
 import de.p72b.burstpooltracker.room.Miner
 import android.graphics.Color
-import androidx.preference.PreferenceManager
-import de.p72b.burstpooltracker.App
 import de.p72b.burstpooltracker.R
 import de.p72b.burstpooltracker.Utils
-import de.p72b.burstpooltracker.settings.ADDRESS
-import de.p72b.burstpooltracker.settings.FILTER
 
 
 class StatisticFragment : Fragment() {
 
     private lateinit var lineChart: LineChartView
+    private lateinit var lineChartPlotSize: LineChartView
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_statistics, null)
@@ -32,6 +29,7 @@ class StatisticFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         lineChart = view.findViewById(R.id.vLineChartBurst)
+        lineChartPlotSize = view.findViewById(R.id.vLineChartBurstPlotSize)
 
         (activity as MainActivity).minerViewModel.allMiners.observe(this,
             Observer<List<Miner>> { miners ->
@@ -42,6 +40,11 @@ class StatisticFragment : Fragment() {
     }
 
     private fun setMiners(miners: List<Miner>) {
+        fillBurst(miners)
+        fillPlotSize(miners)
+    }
+
+    private fun fillBurst(miners: List<Miner>) {
         val size = miners.size
         val lables = arrayOfNulls<String>(size)
         val values = FloatArray(size)
@@ -61,5 +64,27 @@ class StatisticFragment : Fragment() {
         lineChart.addData(dataSet as ChartSet)
         lineChart.dismissAllTooltips()
         lineChart.show()
+    }
+
+    private fun fillPlotSize(miners: List<Miner>) {
+        val size = miners.size
+        val lables = arrayOfNulls<String>(size)
+        val values = FloatArray(size)
+
+        for ((index, value) in miners.withIndex()) {
+            lables[index] = " " //Utils.timeStampToIsoDate(value.timeMilliseconds)
+            values[index] = value.plotSize.toFloat()
+        }
+
+        val dataSet = LineSet(lables, values)
+        dataSet.setColor(Color.parseColor("#53c1bd")).setFill(Color.parseColor("#3d6c73"))
+            .setGradientFill(intArrayOf(Color.parseColor("#364d5a"), Color.parseColor("#3f7178")), null)
+
+        //dataSet.setColor(Color.parseColor("#758cbb"))
+        //    .setFill(Color.parseColor("#2d374c"))
+        //    .setDotsColor(Color.parseColor("#758cbb")).thickness = 1.0f
+        lineChartPlotSize.addData(dataSet as ChartSet)
+        lineChartPlotSize.dismissAllTooltips()
+        lineChartPlotSize.show()
     }
 }
