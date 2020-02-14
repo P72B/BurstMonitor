@@ -8,17 +8,23 @@ import de.p72b.burstpooltracker.Utils
 import de.p72b.burstpooltracker.room.Miner
 import org.koin.core.KoinComponent
 import org.koin.core.inject
+import java.util.*
 
 class MinerViewModel(application: Application) : AndroidViewModel(application), KoinComponent {
 
     private val repository: MinerRepository by inject()
-    val allMiners: LiveData<List<Miner>>
-
-    init {
-        allMiners = repository.getAllMiners()
-    }
 
     fun insert(miner: Miner) {
         repository.insert(miner)
+    }
+
+    fun getMiners(isDesc: Boolean = false): LiveData<List<Miner>> {
+        val timeFilter = Utils.filterTime()
+        return if (timeFilter == 0L) {
+            repository.getAllMiners(isDesc)
+        } else {
+            val age = Calendar.getInstance().timeInMillis - timeFilter
+            repository.filter(isDesc, age)
+        }
     }
 }

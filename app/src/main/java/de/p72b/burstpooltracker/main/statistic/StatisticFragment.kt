@@ -12,6 +12,7 @@ import com.db.chart.view.LineChartView
 import de.p72b.burstpooltracker.main.MainActivity
 import de.p72b.burstpooltracker.room.Miner
 import android.graphics.Color
+import android.widget.Button
 import de.p72b.burstpooltracker.R
 import de.p72b.burstpooltracker.Utils
 
@@ -43,7 +44,7 @@ class StatisticFragment : Fragment() {
         lineChartPlotSize = view.findViewById(R.id.vLineChartBurstPlotSize)
         lineChartHistoricalShare = view.findViewById(R.id.vLineChartHistoricalShare)
 
-        (activity as MainActivity).minerViewModel.allMiners.observe(this,
+        (activity as MainActivity).minerViewModel.getMiners().observe(this,
             Observer<List<Miner>> { miners ->
                 if (miners != null) {
                     setMiners(Utils.filter(miners))
@@ -52,16 +53,17 @@ class StatisticFragment : Fragment() {
     }
 
     private fun setMiners(miners: List<Miner>) {
+        fillBurst(miners)
+        fillPlotSize(miners)
+        fillHistoricalShare(miners)
+    }
+
+    private fun fillBurst(
+        miners: List<Miner>
+    ) {
         val size = miners.size
         val lables = arrayOfNulls<String>(size)
         val values = FloatArray(size)
-
-        fillBurst(miners, lables, values)
-        fillPlotSize(miners, lables, values)
-        fillHistoricalShare(miners, lables, values)
-    }
-
-    private fun fillBurst(miners: List<Miner>, lables: Array<String?>, values: FloatArray) {
 
         for ((index, value) in miners.withIndex()) {
             lables[index] = " " //Utils.timeStampToIsoDate(value.timeMilliseconds)
@@ -74,12 +76,18 @@ class StatisticFragment : Fragment() {
             .setGradientFill(gradient, null)
             //.setDotsColor(dotsColor)
             .thickness = lineThickness
+
         lineChart.addData(dataSet as ChartSet)
         lineChart.dismissAllTooltips()
         lineChart.show()
     }
 
-    private fun fillPlotSize(miners: List<Miner>, lables: Array<String?>, values: FloatArray) {
+    private fun fillPlotSize(
+        miners: List<Miner>
+    ) {
+        val size = miners.size
+        val lables = arrayOfNulls<String>(size)
+        val values = FloatArray(size)
         for ((index, value) in miners.withIndex()) {
             lables[index] = " " //Utils.timeStampToIsoDate(value.timeMilliseconds)
             values[index] = value.plotSize.toFloat()
@@ -91,16 +99,18 @@ class StatisticFragment : Fragment() {
             .setGradientFill(gradient, null)
             //.setDotsColor(dotsColor)
             .thickness = lineThickness
+
         lineChartPlotSize.addData(dataSet as ChartSet)
         lineChartPlotSize.dismissAllTooltips()
         lineChartPlotSize.show()
     }
 
     private fun fillHistoricalShare(
-        miners: List<Miner>,
-        lables: Array<String?>,
-        values: FloatArray
+        miners: List<Miner>
     ) {
+        val size = miners.size
+        val lables = arrayOfNulls<String>(size)
+        val values = FloatArray(size)
         for ((index, value) in miners.withIndex()) {
             lables[index] = " "
             values[index] = value.historicalShare.toFloat()
@@ -112,6 +122,7 @@ class StatisticFragment : Fragment() {
             .setGradientFill(gradient, null)
             //.setDotsColor(dotsColor)
             .thickness = lineThickness
+
         lineChartHistoricalShare.addData(dataSet as ChartSet)
         lineChartHistoricalShare.dismissAllTooltips()
         lineChartHistoricalShare.show()

@@ -9,6 +9,7 @@
     <string name="pref_key_address">address</string>
     <string name="pref_key_pool">pool</string>
     <string name="pref_key_filter">filter</string>
+    <string name="pref_key_filter_time">filterTime</string>
     <string name="pref_key_firebase_tracking">firebaseTracking</string>
     <string name="pref_key_crashlytics_tracking">crashlyticsTracking</string>
     <string name="pref_summary_firebase">Allow, to help the developer understand your behaviour of the app.</string>

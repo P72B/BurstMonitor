@@ -21,6 +21,8 @@ import kotlinx.android.synthetic.main.fragment_list.*
 
 class ListFragment: Fragment() {
 
+    private lateinit var adapter: MinerAdapter
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_list, null)
     }
@@ -29,19 +31,19 @@ class ListFragment: Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val recyclerView: RecyclerView = view.findViewById(R.id.vRecyclerView)
-        val adapter = MinerAdapter(App.sInstance.applicationContext)
+        adapter = MinerAdapter(App.sInstance.applicationContext)
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(context)
-
-        (activity as MainActivity).minerViewModel.allMiners.observe(this,
-            Observer<List<Miner>> { miners ->
-                adapter.setMiners(Utils.filter(miners))
-            })
     }
 
     override fun onResume() {
         super.onResume()
         setupAddress()
+
+        (activity as MainActivity).minerViewModel.getMiners(true).observe(this,
+            Observer<List<Miner>> { miners ->
+                adapter.setMiners(Utils.filter(miners))
+            })
     }
 
     private fun setupAddress() {

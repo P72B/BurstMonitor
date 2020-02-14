@@ -10,15 +10,29 @@ import org.koin.core.KoinComponent
 class MinerRepository : KoinComponent {
     private val minerDao: MinerDao
     private val allMiner: LiveData<List<Miner>>
+    private val getAllDesc: LiveData<List<Miner>>
 
     init {
         val db = RoomMinerDatabase.getInstance(App.sInstance)
         minerDao = db?.minerDao()!!
         allMiner = minerDao.getAll()
+        getAllDesc = minerDao.getAllDesc()
     }
 
-    fun getAllMiners(): LiveData<List<Miner>> {
-        return allMiner
+    fun getAllMiners(isDesc: Boolean = false): LiveData<List<Miner>> {
+        return if (isDesc) {
+            getAllDesc
+        } else {
+            allMiner
+        }
+    }
+
+    fun filter(isDesc: Boolean = false, value: Long): LiveData<List<Miner>> {
+        return if (isDesc) {
+            minerDao.filterDesc(value)
+        } else {
+            minerDao.filter(value)
+        }
     }
 
     fun getLatestEntryFor(address: String): Miner? {
