@@ -5,19 +5,20 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import com.db.chart.model.ChartSet
 import com.db.chart.model.LineSet
 import com.db.chart.view.LineChartView
-import de.p72b.burstpooltracker.main.MainActivity
 import de.p72b.burstpooltracker.room.Miner
 import android.graphics.Color
-import android.widget.Button
 import de.p72b.burstpooltracker.R
-import de.p72b.burstpooltracker.Utils
+import de.p72b.burstpooltracker.main.MinerViewModel
+import de.p72b.burstpooltracker.util.Utils
+import org.koin.android.ext.android.inject
 
 
 class StatisticFragment : Fragment() {
+
+    private val minerViewModel: MinerViewModel by inject()
 
     private var gradient: IntArray =
         intArrayOf(Color.parseColor("#364d5a"), Color.parseColor("#3f7178"))
@@ -43,6 +44,14 @@ class StatisticFragment : Fragment() {
         lineChart = view.findViewById(R.id.vLineChartBurst)
         lineChartPlotSize = view.findViewById(R.id.vLineChartBurstPlotSize)
         lineChartHistoricalShare = view.findViewById(R.id.vLineChartHistoricalShare)
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        minerViewModel.getMiners().observe(this, { miners ->
+            setMiners(Utils.filter(miners))
+        })
     }
 
     private fun setMiners(miners: List<Miner>) {

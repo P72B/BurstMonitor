@@ -3,24 +3,37 @@ package de.p72b.burstpooltracker.worker
 import android.content.Context
 import android.util.Log
 import androidx.preference.PreferenceManager
+import androidx.work.ListenableWorker
 import androidx.work.Worker
+import androidx.work.WorkerFactory
 import androidx.work.WorkerParameters
-import de.p72b.burstpooltracker.MinerRepository
-import de.p72b.burstpooltracker.Utils
+import de.p72b.burstpooltracker.main.MinerRepository
+import de.p72b.burstpooltracker.util.Utils
 import de.p72b.burstpooltracker.http.MinerPage
 import de.p72b.burstpooltracker.http.WebService
 import de.p72b.burstpooltracker.settings.ADDRESS
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
-import org.koin.java.KoinJavaComponent
+
+class MyWorkerFactory(
+    private val webService: WebService,
+    private val repository: MinerRepository) : WorkerFactory() {
+
+    override fun createWorker(
+        appContext: Context,
+        workerClassName: String,
+        workerParameters: WorkerParameters
+    ): ListenableWorker? {
+        return StatusFetcherWorker(webService, repository, appContext, workerParameters)
+    }
+}
 
 class StatusFetcherWorker(
+    private val webService: WebService,
+    private val repository: MinerRepository,
     private val appContext: Context,
     workerParams: WorkerParameters
 ) : Worker(appContext, workerParams) {
-
-    private val webService: WebService by KoinJavaComponent.inject(WebService::class.java)
-    private val repository: MinerRepository by KoinJavaComponent.inject(MinerRepository::class.java)
 
     override fun doWork(): Result {
         val minerPageResponse = getMinerPage()

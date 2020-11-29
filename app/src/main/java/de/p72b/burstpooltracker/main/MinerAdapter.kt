@@ -7,11 +7,8 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import de.p72b.burstpooltracker.R
-import de.p72b.burstpooltracker.Utils
+import de.p72b.burstpooltracker.util.Utils
 import de.p72b.burstpooltracker.room.Miner
-import java.text.SimpleDateFormat
-import java.time.format.DateTimeFormatter
-import java.util.*
 
 class MinerAdapter(context: Context): RecyclerView.Adapter<MinerAdapter.MinerViewHolder>() {
 

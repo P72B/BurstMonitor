@@ -2,8 +2,7 @@ package de.p72b.burstpooltracker.main
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
-import de.p72b.burstpooltracker.MinerRepository
-import de.p72b.burstpooltracker.Utils
+import de.p72b.burstpooltracker.util.Utils
 import de.p72b.burstpooltracker.room.Miner
 import java.util.Calendar
 

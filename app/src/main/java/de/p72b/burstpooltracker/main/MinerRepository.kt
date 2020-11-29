@@ -1,7 +1,8 @@
-package de.p72b.burstpooltracker
+package de.p72b.burstpooltracker.main
 
 import android.os.AsyncTask
 import androidx.lifecycle.LiveData
+import de.p72b.burstpooltracker.App
 import de.p72b.burstpooltracker.room.Miner
 import de.p72b.burstpooltracker.room.MinerDao
 import de.p72b.burstpooltracker.room.RoomMinerDatabase

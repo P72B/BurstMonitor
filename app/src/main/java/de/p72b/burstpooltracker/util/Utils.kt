@@ -1,9 +1,9 @@
-package de.p72b.burstpooltracker
+package de.p72b.burstpooltracker.util
 
 import androidx.preference.PreferenceManager
+import de.p72b.burstpooltracker.App
 import de.p72b.burstpooltracker.http.MinerPage
 import de.p72b.burstpooltracker.room.Miner
-import de.p72b.burstpooltracker.settings.ADDRESS
 import de.p72b.burstpooltracker.settings.FILTER
 import de.p72b.burstpooltracker.settings.FILTER_TIME
 import java.text.SimpleDateFormat

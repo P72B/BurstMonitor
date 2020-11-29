@@ -19,6 +19,13 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
+    }
 }
 
 dependencies {
@@ -38,6 +45,7 @@ dependencies {
 
     implementation "android.arch.work:work-runtime-ktx:$androidXWorkVersion"
     implementation "androidx.room:room-runtime:$roomVersion"
+    kapt "androidx.room:room-compiler:$roomVersion"
 
     implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
 
@@ -54,6 +62,7 @@ dependencies {
     implementation "org.koin:koin-android:$koinVersion"
     implementation "org.koin:koin-androidx-scope:$koinVersion"
     implementation "org.koin:koin-androidx-viewmodel:$koinVersion"
+    implementation "org.koin:koin-androidx-workmanager:$koinVersion"
     implementation "org.koin:koin-core:$koinVersion"
 
     implementation 'com.diogobernardino:williamchart:2.5.0'

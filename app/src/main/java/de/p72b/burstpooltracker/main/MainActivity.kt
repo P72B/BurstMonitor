@@ -26,9 +26,9 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
         const val FETCHER_WORKER = "FETCHER_WORKER"
     }
 
-    var listFragment = ListFragment()
-    var dashboardFragment = DashboardFragment()
-    var statisticFragment = StatisticFragment()
+    private var listFragment = ListFragment()
+    private var dashboardFragment = DashboardFragment()
+    private var statisticFragment = StatisticFragment()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -82,12 +82,11 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
                 .setConstraints(constraints)
                 .build()
 
-        WorkManager.getInstance()
+        WorkManager.getInstance(this)
             .enqueueUniquePeriodicWork(FETCHER_WORKER, ExistingPeriodicWorkPolicy.REPLACE, workRequest)
     }
 
     private fun loadFragment(fragment: Fragment?): Boolean {
-        //switching fragment
         if (fragment != null) {
             supportFragmentManager
                 .beginTransaction()
