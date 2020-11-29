@@ -14,4 +14,7 @@
     <string name="pref_key_crashlytics_tracking">crashlyticsTracking</string>
     <string name="pref_summary_firebase">Allow, to help the developer understand your behaviour of the app.</string>
     <string name="pref_summary_crashlytics">Allow, to send anonymous crash reports to the developer.</string>
+    <string name="title_pending_burst">Pending BURST</string>
+    <string name="title_plot_size">Plot size TB</string>
+    <string name="title_historical_share">Historical share %</string>
 </resources>

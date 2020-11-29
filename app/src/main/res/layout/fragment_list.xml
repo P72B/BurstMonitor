@@ -7,23 +7,6 @@
         android:layout_height="match_parent"
         tools:context=".main.MainActivity">
 
-    <TextView
-            android:id="@+id/vTitle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.012"
-            android:paddingTop="8dp"
-            android:paddingBottom="8dp"
-            android:textSize="15sp"
-            android:textColor="@color/white"
-            android:background="@color/light_grey"
-            app:layout_constraintBottom_toTopOf="@id/vRecyclerView"
-            android:paddingEnd="8dp"
-            app:layout_constraintStart_toStartOf="parent"
-            android:paddingStart="8dp"/>
-
     <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"
             android:layout_height="0dp"

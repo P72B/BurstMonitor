@@ -6,12 +6,8 @@ import de.p72b.burstpooltracker.util.Utils
 import de.p72b.burstpooltracker.room.Miner
 import java.util.Calendar
 
-class MinerViewModel(private val repository: MinerRepository) :
+open class BaseMinerViewModel(private val repository: MinerRepository) :
     ViewModel() {
-
-    fun insert(miner: Miner) {
-        repository.insert(miner)
-    }
 
     fun getMiners(isDesc: Boolean = false): LiveData<List<Miner>> {
         val timeFilter = Utils.filterTime()

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Burst.TextAppearance.Headline1" parent="TextAppearance.MaterialComponents.Headline1">
+        <item name="android:fontFamily">@font/advent_pro_thin</item>
+        <item name="fontFamily">@font/advent_pro_thin</item>
+        <item name="android:lineSpacingExtra">6sp</item>
+        <item name="android:letterSpacing">0</item>
+    </style>
+
+    <style name="Burst.TextAppearance.Headline2" parent="TextAppearance.MaterialComponents.Headline2">
+        <item name="android:fontFamily">@font/advent_pro_thin</item>
+        <item name="fontFamily">@font/advent_pro_thin</item>
+        <item name="android:lineSpacingExtra">6sp</item>
+        <item name="android:letterSpacing">0</item>
+    </style>
+
+    <style name="Burst.TextAppearance.Headline3" parent="TextAppearance.MaterialComponents.Headline3">
+        <item name="android:fontFamily">@font/advent_pro_thin</item>
+        <item name="fontFamily">@font/advent_pro_thin</item>
+        <item name="android:letterSpacing">0</item>
+    </style>
+
+    <style name="Burst.TextAppearance.Headline4" parent="TextAppearance.MaterialComponents.Headline4">
+        <item name="android:fontFamily">@font/advent_pro_thin</item>
+        <item name="fontFamily">@font/advent_pro_thin</item>
+        <item name="android:letterSpacing">0</item>
+    </style>
+
+    <style name="Burst.TextAppearance.Headline5" parent="TextAppearance.MaterialComponents.Headline5">
+        <item name="android:fontFamily">@font/advent_pro_thin</item>
+        <item name="fontFamily">@font/advent_pro_thin</item>
+        <item name="android:letterSpacing">0</item>
+    </style>
+
+    <style name="Burst.TextAppearance.Headline6" parent="TextAppearance.MaterialComponents.Headline6">
+        <item name="android:fontFamily">@font/advent_pro_thin</item>
+        <item name="fontFamily">@font/advent_pro_thin</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:letterSpacing">0</item>
+    </style>
+
+    <style name="Burst.TextAppearance.Subtitle1" parent="TextAppearance.MaterialComponents.Subtitle1">
+        <item name="android:fontFamily">@font/advent_pro_light</item>
+        <item name="fontFamily">@font/advent_pro_light</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:lineSpacingExtra">2sp</item>
+        <item name="android:letterSpacing">0</item>
+    </style>
+
+    <style name="Burst.TextAppearance.Subtitle2" parent="TextAppearance.MaterialComponents.Subtitle2">
+        <item name="android:fontFamily">@font/advent_pro_light</item>
+        <item name="fontFamily">@font/advent_pro_light</item>
+        <item name="android:letterSpacing">0</item>
+    </style>
+
+    <style name="Burst.TextAppearance.Body1" parent="TextAppearance.MaterialComponents.Body1">
+        <item name="android:fontFamily">@font/advent_pro</item>
+        <item name="fontFamily">@font/advent_pro</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:lineSpacingExtra">4sp</item>
+        <item name="android:letterSpacing">0</item>
+    </style>
+
+    <style name="Burst.TextAppearance.Body2" parent="TextAppearance.MaterialComponents.Body2">
+        <item name="android:fontFamily">@font/advent_pro</item>
+        <item name="fontFamily">@font/advent_pro</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:lineSpacingExtra">3sp</item>
+        <item name="android:letterSpacing">0</item>
+    </style>
+
+    <style name="Burst.TextAppearance.Caption" parent="TextAppearance.MaterialComponents.Caption">
+        <item name="android:fontFamily">@font/advent_pro</item>
+        <item name="fontFamily">@font/advent_pro</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:lineSpacingExtra">6sp</item>
+        <item name="android:letterSpacing">0</item>
+    </style>
+
+</resources>

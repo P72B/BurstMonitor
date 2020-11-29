@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="BurstTheme" parent="Theme.MaterialComponents.Light.DarkActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="preferenceTheme">@style/PreferenceThemeOverlay.v14.Material</item>
+
+        <item name="textAppearanceHeadline1">@style/Burst.TextAppearance.Headline1</item>
+        <item name="textAppearanceHeadline2">@style/Burst.TextAppearance.Headline2</item>
+        <item name="textAppearanceHeadline3">@style/Burst.TextAppearance.Headline3</item>
+        <item name="textAppearanceHeadline4">@style/Burst.TextAppearance.Headline4</item>
+        <item name="textAppearanceHeadline5">@style/Burst.TextAppearance.Headline5</item>
+        <item name="textAppearanceHeadline6">@style/Burst.TextAppearance.Headline6</item>
+        <item name="textAppearanceSubtitle1">@style/Burst.TextAppearance.Subtitle1</item>
+        <item name="textAppearanceSubtitle2">@style/Burst.TextAppearance.Subtitle2</item>
+        <item name="textAppearanceBody1">@style/Burst.TextAppearance.Body1</item>
+        <item name="textAppearanceBody2">@style/Burst.TextAppearance.Body2</item>
+        <item name="textAppearanceCaption">@style/Burst.TextAppearance.Caption</item>
+    </style>
+
+    <style name="BurstTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="BurstTheme.AppBarOverlay" parent="ThemeOverlay.MaterialComponents.Dark.ActionBar" />
+
+    <style name="BurstTheme.PopupOverlay" parent="ThemeOverlay.MaterialComponents.Light" />
+
+</resources>

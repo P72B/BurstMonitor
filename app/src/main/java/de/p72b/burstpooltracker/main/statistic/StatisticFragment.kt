@@ -11,14 +11,14 @@ import com.db.chart.view.LineChartView
 import de.p72b.burstpooltracker.room.Miner
 import android.graphics.Color
 import de.p72b.burstpooltracker.R
-import de.p72b.burstpooltracker.main.MinerViewModel
+import de.p72b.burstpooltracker.main.BaseMinerViewModel
 import de.p72b.burstpooltracker.util.Utils
 import org.koin.android.ext.android.inject
 
 
 class StatisticFragment : Fragment() {
 
-    private val minerViewModel: MinerViewModel by inject()
+    private val minerViewModel: BaseMinerViewModel by inject()
 
     private var gradient: IntArray =
         intArrayOf(Color.parseColor("#364d5a"), Color.parseColor("#3f7178"))

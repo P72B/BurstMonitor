@@ -21,14 +21,4 @@ class SettingsActivity : AppCompatActivity() {
             .replace(R.id.container, SettingsFragment())
             .commit()
     }
-
-    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
-        return when (item?.itemId) {
-            android.R.id.home -> {
-                onBackPressed()
-                true
-            }
-            else -> super.onOptionsItemSelected(item)
-        }
-    }
 }

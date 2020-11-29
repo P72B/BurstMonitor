@@ -6,7 +6,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 
 @Database(entities = [Miner::class], version = 1)
-abstract class RoomMinerDatabase: RoomDatabase() {
+abstract class RoomMinerDatabase : RoomDatabase() {
 
     abstract fun minerDao(): MinerDao
 
@@ -16,8 +16,12 @@ abstract class RoomMinerDatabase: RoomDatabase() {
         fun getInstance(context: Context): RoomMinerDatabase? {
             if (INSTANCE == null) {
                 synchronized(RoomMinerDatabase::class) {
-                    INSTANCE = Room.databaseBuilder(context.applicationContext,
-                        RoomMinerDatabase::class.java, "miner.db")
+                    INSTANCE = Room.databaseBuilder(
+                        context.applicationContext,
+                        RoomMinerDatabase::class.java,
+                        "miner.db"
+                    )
+                        .fallbackToDestructiveMigration()
                         .build()
                 }
             }

@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import de.p72b.burstpooltracker.App
 import de.p72b.burstpooltracker.R
 import de.p72b.burstpooltracker.main.MinerAdapter
-import de.p72b.burstpooltracker.main.MinerViewModel
+import de.p72b.burstpooltracker.main.BaseMinerViewModel
 import de.p72b.burstpooltracker.settings.ADDRESS
 import de.p72b.burstpooltracker.util.Utils
 import kotlinx.android.synthetic.main.fragment_list.*
@@ -21,7 +21,7 @@ import org.koin.android.ext.android.inject
 class ListFragment: Fragment() {
 
     private lateinit var adapter: MinerAdapter
-    private val minerViewModel: MinerViewModel by inject()
+    private val minerViewModel: BaseMinerViewModel by inject()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_list, null)
@@ -38,15 +38,9 @@ class ListFragment: Fragment() {
 
     override fun onResume() {
         super.onResume()
-        setupAddress()
 
         minerViewModel.getMiners(true).observe(this, { miners ->
             adapter.setMiners(Utils.filter(miners))
         })
-    }
-
-    private fun setupAddress() {
-        vTitle.text = PreferenceManager.getDefaultSharedPreferences(App.sInstance.applicationContext)
-            .getString(getString(ADDRESS), getString(R.string.not_set))
     }
 }

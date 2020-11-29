@@ -39,6 +39,14 @@ class MinerRepository {
         return minerDao.getLatestEntryFor(address)
     }
 
+    suspend fun getLatestMiner(address: String): Miner? {
+        return minerDao.getLatestMiner(address)
+    }
+
+    fun observeLatestMiner(address: String): LiveData<Miner?> {
+        return minerDao.observeLatestMiner(address)
+    }
+
     fun insert(miner: Miner) {
         InsertAsyncTask(minerDao).execute(miner)
     }

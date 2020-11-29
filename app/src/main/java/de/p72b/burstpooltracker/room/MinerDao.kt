@@ -32,4 +32,10 @@ interface MinerDao {
 
     @Query("SELECT * from miner WHERE burst_id = :address ORDER BY time_milliseconds ASC LIMIT 1")
     fun getLatestEntryFor(address: String): Miner?
+
+    @Query("SELECT * from miner WHERE burst_id = :address ORDER BY time_milliseconds DESC LIMIT 1")
+    suspend fun getLatestMiner(address: String): Miner?
+
+    @Query("SELECT * from miner WHERE burst_id = :address ORDER BY time_milliseconds DESC LIMIT 1")
+    fun observeLatestMiner(address: String): LiveData<Miner?>
 }

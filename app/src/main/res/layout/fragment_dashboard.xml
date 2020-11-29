@@ -1,10 +1,159 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="de.p72b.burstpooltracker.main.dashboard.DashboardViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_height="match_parent"
+        android:layout_width="match_parent"
         tools:context=".main.MainActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/vTitle"
+            style="?textAppearanceBody1"
+            android:background="@color/light_grey"
+            android:gravity="center"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:paddingBottom="8dp"
+            android:paddingEnd="8dp"
+            android:paddingStart="16dp"
+            android:paddingTop="8dp"
+            android:text="@{viewModel.latestMiner.burstId}"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toTopOf="@id/cardPendingBurst"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.012"
+            tools:text="XXXX-XXXX-XXXX-XXXXX" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardPendingBurst"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_width="0dp"
+            app:layout_constraintEnd_toStartOf="@+id/cardPlotSize"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/vTitle">
+
+            <LinearLayout
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_width="wrap_content"
+                    android:text="@string/title_pending_burst"
+                    android:textAppearance="?attr/textAppearanceBody2"
+                    android:textColor="?android:attr/textColorSecondary" />
+
+                <TextView
+                    style="?textAppearanceHeadline4"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:maxLines="1"
+                    android:textAppearance="?attr/textAppearanceHeadline6"
+                    app:doubleToString="@{viewModel.latestMiner.credit}"
+                    tools:text="19.3243456" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardPlotSize"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:layout_width="0dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/cardPendingBurst"
+            app:layout_constraintTop_toBottomOf="@+id/vTitle">
+
+            <LinearLayout
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_width="wrap_content"
+                    android:text="@string/title_plot_size"
+                    android:textAppearance="?attr/textAppearanceBody2"
+                    android:textColor="?android:attr/textColorSecondary" />
+
+                <TextView
+                    style="?textAppearanceHeadline3"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:maxLines="1"
+                    android:textAppearance="?attr/textAppearanceHeadline6"
+                    app:doubleToString="@{viewModel.latestMiner.plotSize}"
+                    tools:text="11.2034" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardHistoricalShare"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_width="0dp"
+            app:layout_constraintEnd_toStartOf="@+id/cardTimestamp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cardPendingBurst">
+
+            <LinearLayout
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_width="wrap_content"
+                    android:text="@string/title_historical_share"
+                    android:textAppearance="?attr/textAppearanceBody2"
+                    android:textColor="?android:attr/textColorSecondary" />
+
+                <TextView
+                    style="?textAppearanceHeadline3"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:maxLines="1"
+                    android:textAppearance="?attr/textAppearanceHeadline6"
+                    app:doubleToString="@{viewModel.latestMiner.historicalShare}"
+                    tools:text="0.542" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardTimestamp"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:layout_width="0dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/cardHistoricalShare"
+            app:layout_constraintTop_toBottomOf="@+id/cardPlotSize">
+
+            <LinearLayout
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:padding="16dp">
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
