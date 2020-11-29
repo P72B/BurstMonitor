@@ -18,7 +18,7 @@ object Utils {
             minerList.minerItem.let {
                 if (it?.get(1) == poiAddress) {
                     return Miner(0, it[0], it[1], it[2].toDouble(), substringDouble(it[3], 2),
-                        substringDouble(it[4], 3), it[5].toInt(), it[6], Calendar.getInstance().timeInMillis)
+                        substringDouble(it[4], 3), it[5].toInt(), "unknown", Calendar.getInstance().timeInMillis)
                 }
             }
         }

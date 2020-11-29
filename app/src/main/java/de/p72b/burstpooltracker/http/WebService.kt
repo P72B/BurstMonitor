@@ -23,7 +23,7 @@ class WebService : KoinComponent {
         }.build()
 
         val retrofit = Retrofit.Builder()
-                .baseUrl("https://0-100-pool.burst.cryptoguru.org")
+                .baseUrl("https://0-100pool.burstcoin.ro")
                 .addConverterFactory(JspoonConverterFactory.create())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .client(client)
