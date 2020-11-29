@@ -55,9 +55,16 @@ class StatisticFragment : Fragment() {
     }
 
     private fun setMiners(miners: List<Miner>) {
+        reset()
         fillBurst(miners)
         fillPlotSize(miners)
         fillHistoricalShare(miners)
+    }
+
+    private fun reset() {
+        lineChart.reset()
+        lineChartPlotSize.reset()
+        lineChartHistoricalShare.reset()
     }
 
     private fun fillBurst(
