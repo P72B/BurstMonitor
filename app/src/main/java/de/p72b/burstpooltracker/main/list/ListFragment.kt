@@ -39,11 +39,6 @@ class ListFragment: Fragment() {
     override fun onResume() {
         super.onResume()
         setupAddress()
-
-        (activity as MainActivity).minerViewModel.getMiners(true).observe(this,
-            Observer<List<Miner>> { miners ->
-                adapter.setMiners(Utils.filter(miners))
-            })
     }
 
     private fun setupAddress() {

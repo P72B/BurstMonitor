@@ -5,9 +5,8 @@ import androidx.lifecycle.LiveData
 import de.p72b.burstpooltracker.room.Miner
 import de.p72b.burstpooltracker.room.MinerDao
 import de.p72b.burstpooltracker.room.RoomMinerDatabase
-import org.koin.core.KoinComponent
 
-class MinerRepository : KoinComponent {
+class MinerRepository {
     private val minerDao: MinerDao
     private val allMiner: LiveData<List<Miner>>
     private val getAllDesc: LiveData<List<Miner>>

@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.ViewModelProviders
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import de.p72b.burstpooltracker.settings.SettingsActivity
@@ -27,7 +26,6 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
         const val FETCHER_WORKER = "FETCHER_WORKER"
     }
 
-    lateinit var minerViewModel: MinerViewModel
     var listFragment = ListFragment()
     var dashboardFragment = DashboardFragment()
     var statisticFragment = StatisticFragment()
@@ -39,8 +37,6 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
 
         val fab: FloatingActionButton = findViewById(R.id.vFab)
         val bottomNavigationView: BottomNavigationView = findViewById(R.id.vNavigationView)
-
-        minerViewModel = ViewModelProviders.of(this).get(MinerViewModel::class.java)
 
         loadFragment(dashboardFragment)
 

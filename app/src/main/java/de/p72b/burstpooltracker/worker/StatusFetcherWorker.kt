@@ -12,17 +12,15 @@ import de.p72b.burstpooltracker.http.WebService
 import de.p72b.burstpooltracker.settings.ADDRESS
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
-import org.koin.core.KoinComponent
-import org.koin.core.inject
+import org.koin.java.KoinJavaComponent
 
 class StatusFetcherWorker(
     private val appContext: Context,
     workerParams: WorkerParameters
-) : Worker(appContext, workerParams),
-    KoinComponent {
+) : Worker(appContext, workerParams) {
 
-    private val webService: WebService by inject()
-    private val repository: MinerRepository by inject()
+    private val webService: WebService by KoinJavaComponent.inject(WebService::class.java)
+    private val repository: MinerRepository by KoinJavaComponent.inject(MinerRepository::class.java)
 
     override fun doWork(): Result {
         val minerPageResponse = getMinerPage()

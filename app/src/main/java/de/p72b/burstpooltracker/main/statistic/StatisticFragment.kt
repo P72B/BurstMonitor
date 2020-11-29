@@ -43,13 +43,6 @@ class StatisticFragment : Fragment() {
         lineChart = view.findViewById(R.id.vLineChartBurst)
         lineChartPlotSize = view.findViewById(R.id.vLineChartBurstPlotSize)
         lineChartHistoricalShare = view.findViewById(R.id.vLineChartHistoricalShare)
-
-        (activity as MainActivity).minerViewModel.getMiners().observe(this,
-            Observer<List<Miner>> { miners ->
-                if (miners != null) {
-                    setMiners(Utils.filter(miners))
-                }
-            })
     }
 
     private fun setMiners(miners: List<Miner>) {

@@ -2,13 +2,12 @@ package de.p72b.burstpooltracker.http
 
 import io.reactivex.Flowable
 import okhttp3.OkHttpClient
-import org.koin.core.KoinComponent
 import pl.droidsonroids.retrofit2.JspoonConverterFactory
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import java.util.concurrent.TimeUnit
 
-class WebService : KoinComponent {
+class WebService {
 
     companion object {
         private val TAG = WebService::class.java.simpleName

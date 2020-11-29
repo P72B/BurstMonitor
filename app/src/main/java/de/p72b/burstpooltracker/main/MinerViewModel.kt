@@ -1,18 +1,14 @@
 package de.p72b.burstpooltracker.main
 
-import android.app.Application
-import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.ViewModel
 import de.p72b.burstpooltracker.MinerRepository
 import de.p72b.burstpooltracker.Utils
 import de.p72b.burstpooltracker.room.Miner
-import org.koin.core.KoinComponent
-import org.koin.core.inject
-import java.util.*
+import java.util.Calendar
 
-class MinerViewModel(application: Application) : AndroidViewModel(application), KoinComponent {
-
-    private val repository: MinerRepository by inject()
+class MinerViewModel(private val repository: MinerRepository) :
+    ViewModel() {
 
     fun insert(miner: Miner) {
         repository.insert(miner)
