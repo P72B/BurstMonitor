@@ -1,11 +1,11 @@
 package de.p72b.burstpooltracker.http
 
-import io.reactivex.Flowable
-import retrofit2.http.*
+import retrofit2.http.GET
+
 
 interface WebServiceApi {
 
     @GET("miners")
-    fun getMiners(): Flowable<MinerPage>
+    suspend fun getMiners(): MinerPage
 
 }

@@ -3,8 +3,8 @@ package de.p72b.burstpooltracker.worker
 import android.content.Context
 import android.util.Log
 import androidx.preference.PreferenceManager
+import androidx.work.CoroutineWorker
 import androidx.work.ListenableWorker
-import androidx.work.Worker
 import androidx.work.WorkerFactory
 import androidx.work.WorkerParameters
 import de.p72b.burstpooltracker.main.MinerRepository
@@ -12,8 +12,8 @@ import de.p72b.burstpooltracker.util.Utils
 import de.p72b.burstpooltracker.http.MinerPage
 import de.p72b.burstpooltracker.http.WebService
 import de.p72b.burstpooltracker.settings.ADDRESS
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.schedulers.Schedulers
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 
 class MyWorkerFactory(
     private val webService: WebService,
@@ -33,12 +33,22 @@ class StatusFetcherWorker(
     private val repository: MinerRepository,
     private val appContext: Context,
     workerParams: WorkerParameters
-) : Worker(appContext, workerParams) {
+) : CoroutineWorker(appContext, workerParams) {
 
-    override fun doWork(): Result {
-        val minerPageResponse = getMinerPage()
+
+    override suspend fun doWork(): Result {
+        withContext(Dispatchers.IO) {
+            val minerPage = withContext(Dispatchers.IO) {
+                webService.getMiners()
+            }
+            handleFetchedPage(minerPage)
+        }
+        return Result.success()
+    }
+
+    private fun handleFetchedPage(page: MinerPage) {
         val address = PreferenceManager.getDefaultSharedPreferences(appContext).getString(appContext.getString(ADDRESS), "") ?: ""
-        val foundPoiMiner = Utils.minerFromPage(minerPageResponse, address)
+        val foundPoiMiner = Utils.minerFromPage(page, address)
         if (foundPoiMiner != null) {
             repository.getLatestEntryFor(address)?.let {
                 foundPoiMiner.delta_x = foundPoiMiner.credit - it.credit
@@ -53,14 +63,5 @@ class StatusFetcherWorker(
             Log.d("p72b", "poi miner NOT found!")
             // TODO Upps miner not found! Alarm!
         }
-
-        return Result.success()
-    }
-
-    private fun getMinerPage(): MinerPage {
-        return webService.getMiners()
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .blockingFirst()
     }
 }

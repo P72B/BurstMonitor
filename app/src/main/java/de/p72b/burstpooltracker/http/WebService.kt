@@ -1,10 +1,8 @@
 package de.p72b.burstpooltracker.http
 
-import io.reactivex.Flowable
 import okhttp3.OkHttpClient
 import pl.droidsonroids.retrofit2.JspoonConverterFactory
 import retrofit2.Retrofit
-import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import java.util.concurrent.TimeUnit
 
 class WebService {
@@ -24,12 +22,11 @@ class WebService {
         val retrofit = Retrofit.Builder()
                 .baseUrl("https://0-100pool.burstcoin.ro")
                 .addConverterFactory(JspoonConverterFactory.create())
-                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .client(client)
                 .build()
 
         retrofit.create(WebServiceApi::class.java)
     }
 
-    fun getMiners(): Flowable<MinerPage> = api.getMiners()
+    suspend fun getMiners() = api.getMiners()
 }
