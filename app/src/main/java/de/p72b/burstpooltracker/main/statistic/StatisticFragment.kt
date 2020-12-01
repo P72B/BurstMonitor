@@ -56,6 +56,7 @@ class StatisticFragment : Fragment() {
 
     private fun setMiners(miners: List<Miner>) {
         reset()
+        if (miners.isEmpty()) return
         fillBurst(miners)
         fillPlotSize(miners)
         fillHistoricalShare(miners)
@@ -67,9 +68,7 @@ class StatisticFragment : Fragment() {
         lineChartHistoricalShare.reset()
     }
 
-    private fun fillBurst(
-        miners: List<Miner>
-    ) {
+    private fun fillBurst(miners: List<Miner>) {
         val size = miners.size
         val lables = arrayOfNulls<String>(size)
         val values = FloatArray(size)

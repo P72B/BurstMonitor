@@ -35,10 +35,6 @@ class MinerRepository {
         }
     }
 
-    fun getLatestEntryFor(address: String): Miner? {
-        return minerDao.getLatestEntryFor(address)
-    }
-
     suspend fun getLatestMiner(address: String): Miner? {
         return minerDao.getLatestMiner(address)
     }
@@ -52,7 +48,7 @@ class MinerRepository {
     }
 
     fun deleteWhereDeltaYSmallerAs(value: Long) {
-        minerDao.deleteWhereDeltaYSmallerAs(value)
+        minerDao.deleteWhereDeltaTimeMillisecondsSmallerAs(value)
     }
 
     class InsertAsyncTask internal constructor(private val asyncTaskDao: MinerDao) : AsyncTask<Miner, Void, Void>() {

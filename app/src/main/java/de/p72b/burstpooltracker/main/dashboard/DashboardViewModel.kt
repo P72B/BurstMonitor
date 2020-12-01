@@ -3,7 +3,7 @@ package de.p72b.burstpooltracker.main.dashboard
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Transformations
 import de.p72b.burstpooltracker.main.BaseMinerViewModel
-import de.p72b.burstpooltracker.main.ObserveLatestMinerUserCase
+import de.p72b.burstpooltracker.main.usecase.ObserveLatestMinerUserCase
 import de.p72b.burstpooltracker.main.MinerRepository
 import de.p72b.burstpooltracker.room.Miner
 

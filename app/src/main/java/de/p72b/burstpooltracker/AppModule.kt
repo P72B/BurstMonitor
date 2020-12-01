@@ -5,8 +5,8 @@ import androidx.preference.PreferenceManager
 import de.p72b.burstpooltracker.main.MinerRepository
 import de.p72b.burstpooltracker.http.WebService
 import de.p72b.burstpooltracker.main.BaseMinerViewModel
-import de.p72b.burstpooltracker.main.ObserveLatestMinerUserCase
-import de.p72b.burstpooltracker.main.GetLatestMinerStatusUserCase
+import de.p72b.burstpooltracker.main.usecase.ObserveLatestMinerUserCase
+import de.p72b.burstpooltracker.main.usecase.GetLatestMinerStatusUserCase
 import de.p72b.burstpooltracker.main.dashboard.DashboardViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module

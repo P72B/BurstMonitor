@@ -1,8 +1,9 @@
-package de.p72b.burstpooltracker.main
+package de.p72b.burstpooltracker.main.usecase
 
 import android.content.Context
 import android.content.SharedPreferences
 import androidx.lifecycle.LiveData
+import de.p72b.burstpooltracker.main.MinerRepository
 import de.p72b.burstpooltracker.room.Miner
 import de.p72b.burstpooltracker.settings.ADDRESS
 

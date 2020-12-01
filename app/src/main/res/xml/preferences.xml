@@ -1,61 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto">
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <PreferenceCategory
-            app:key="pool_category"
-            app:title="Pool setup">
+        app:key="pool_category"
+        app:title="Pool setup">
 
-        <EditTextPreference android:title="Your Address"
-                            android:summary="Set your Wallet address"
-                            android:key="@string/pref_key_address"
-                            android:icon="@drawable/ic_person"
-                            android:dialogMessage="example: AAAA-1234-BBBB-4567B"
-                            app:useSimpleSummaryProvider="true"/>
+        <EditTextPreference
+            android:dialogMessage="example: AAAA-1234-BBBB-4567B"
+            android:icon="@drawable/ic_person"
+            android:key="@string/pref_key_address"
+            android:summary="Set your Wallet address"
+            android:title="Your Address"
+            app:useSimpleSummaryProvider="true" />
 
         <ListPreference
-                app:title="Pool settings"
-                app:key="@string/pref_key_pool"
-                app:icon="@drawable/ic_cloud"
-                app:entries="@array/listArray"
-                app:useSimpleSummaryProvider="true"
-                app:entryValues="@array/listValues"/>
-
+            app:entries="@array/listArray"
+            app:entryValues="@array/listValues"
+            app:icon="@drawable/ic_cloud"
+            app:key="@string/pref_key_pool"
+            app:title="Pool settings"
+            app:useSimpleSummaryProvider="true" />
     </PreferenceCategory>
 
     <PreferenceCategory
-            app:key="other_category"
-            app:title="Others">
+        app:key="other_category"
+        app:title="Others">
 
         <ListPreference
-                app:title="Data step width filter"
-                app:key="@string/pref_key_filter"
-                app:icon="@drawable/ic_filter_list_black_24dp"
-                app:defaultValue="0"
-                app:entries="@array/listArrayFilter"
-                app:useSimpleSummaryProvider="true"
-                app:entryValues="@array/listValuesFilter"/>
+            app:defaultValue="0"
+            app:entries="@array/listArrayFilter"
+            app:entryValues="@array/listValuesFilter"
+            app:icon="@drawable/ic_filter_list_black_24dp"
+            app:key="@string/pref_key_filter"
+            app:title="Data step width filter"
+            app:useSimpleSummaryProvider="true" />
 
         <ListPreference
-                app:title="Data filter"
-                app:key="@string/pref_key_filter_time"
-                app:icon="@drawable/ic_filter_list_black_24dp"
-                app:defaultValue="0"
-                app:entries="@array/listArrayFilterTime"
-                app:useSimpleSummaryProvider="true"
-                app:entryValues="@array/listValuesFilterTime"/>
-
-        <SwitchPreference app:title="Firebase tracking"
-                          app:defaultValue="true"
-                          app:summary="@string/pref_summary_firebase"
-                          app:key="@string/pref_key_firebase_tracking"/>
-
-        <SwitchPreference app:title="Crashlytics tracking"
-                          app:defaultValue="true"
-                          app:summary="@string/pref_summary_crashlytics"
-                          app:key="@string/pref_key_crashlytics_tracking"/>
-
+            app:defaultValue="0"
+            app:entries="@array/listArrayFilterTime"
+            app:entryValues="@array/listValuesFilterTime"
+            app:icon="@drawable/ic_filter_list_black_24dp"
+            app:key="@string/pref_key_filter_time"
+            app:title="Data filter"
+            app:useSimpleSummaryProvider="true" />
     </PreferenceCategory>
-
 </PreferenceScreen>

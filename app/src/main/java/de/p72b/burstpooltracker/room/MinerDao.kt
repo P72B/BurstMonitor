@@ -27,11 +27,8 @@ interface MinerDao {
     @Query("DELETE from miner")
     fun deleteAll()
 
-    @Query("DELETE from miner WHERE delta_y < :value")
-    fun deleteWhereDeltaYSmallerAs(value: Long)
-
-    @Query("SELECT * from miner WHERE burst_id = :address ORDER BY time_milliseconds ASC LIMIT 1")
-    fun getLatestEntryFor(address: String): Miner?
+    @Query("DELETE from miner WHERE delta_time_milliseconds < :value")
+    fun deleteWhereDeltaTimeMillisecondsSmallerAs(value: Long)
 
     @Query("SELECT * from miner WHERE burst_id = :address ORDER BY time_milliseconds DESC LIMIT 1")
     suspend fun getLatestMiner(address: String): Miner?

@@ -10,3 +10,12 @@ fun TextView.doubleToString(value: Double?) {
         text = "$value"
     }
 }
+
+@BindingAdapter("longToString")
+fun TextView.longToString(value: Long?) {
+    value?.let {
+        text = "$value"
+    }
+}
+
+

@@ -153,6 +153,24 @@
                 android:layout_width="match_parent"
                 android:orientation="vertical"
                 android:padding="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:doubleToString="@{viewModel.latestMiner.delta_credit}"
+                    tools:text="0.542"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:longToString="@{viewModel.latestMiner.delta_time_milliseconds}"
+                    tools:text="0.542"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:doubleToString="@{viewModel.latestMiner.pitch}"
+                    tools:text="0.542"/>
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
     </androidx.constraintlayout.widget.ConstraintLayout>
